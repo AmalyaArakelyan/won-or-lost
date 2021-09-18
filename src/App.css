@@ -1,10 +1,14 @@
 .App {
   text-align: center;
+  background-color: #f6f6f6;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
+  background: url('../src/assets/icon/weather.png') no-repeat center;
+  background-size: contain;
+  min-width: 400px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
