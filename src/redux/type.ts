@@ -1,10 +1,10 @@
-export type guess = {
-  city: string;
-  guess: string;
-  realValue: string;
-  result: string;
+export type GUESS = {
+  city: CITY;
+  guess: number;
+  real: number;
+  type: boolean;
 };
-export type cityType = {
+export type CITY = {
   id: number;
   name: string;
   state: string;
@@ -15,20 +15,22 @@ export type cityType = {
   };
 };
 
-export type citiesType = cityType[];
+export type citiesType = CITY[];
 
-export type GuessReducerType = {
-  currentCity?: string;
-  currentGuess?: string;
-  guessing: guess[];
+export type GUESS_REDUCER = {
+  currentCity?: CITY;
+  currentGuess?: number;
+  guessing: GUESS[];
+  lost: number;
+  showResult: boolean;
 };
 
-export type ActionType = {
+export type ACTION = {
   type: string;
-  payload: any;
+  payload?: any;
 };
 
-export type StoreType = {
-  guess: GuessReducerType;
+export type STORE = {
+  guess: GUESS_REDUCER;
 };
-export type DispatchType = (args: ActionType) => ActionType;
+export type DISPATCH = (args: ACTION) => ACTION;

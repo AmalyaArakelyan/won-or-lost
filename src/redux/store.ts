@@ -2,10 +2,10 @@ import { applyMiddleware, combineReducers, createStore, Store } from 'redux';
 import thunk from 'redux-thunk';
 import Reducers from './Reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { StoreType, ActionType, DispatchType } from './type';
+import { STORE, ACTION, DISPATCH } from './type';
 
-const store: Store<StoreType, ActionType> & {
-  dispatch: DispatchType;
+const store: Store<STORE, ACTION> & {
+  dispatch: DISPATCH;
 } = createStore(
   combineReducers({
     ...Reducers,

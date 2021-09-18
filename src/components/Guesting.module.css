@@ -3,7 +3,9 @@
   align-items: center;
   justify-content: center;
 }
-
+.wrap{
+  height: 250px;
+}
 .row > button {
   margin-left: 4px;
   margin-right: 8px;
@@ -38,11 +40,19 @@
 }
 
 .textbox {
-  font-size: 9vw;
+  font-size: 30px;
   padding: 2px;
-  width: 64px;
+  width: 100%;
   text-align: center;
-  margin-right: 4px;
+  margin: 10px 0;
+}
+.input{
+  width: 150px;
+  display: block;
+  margin: 0 auto 25px;
+  height: 40px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .button:hover,

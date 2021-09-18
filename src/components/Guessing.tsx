@@ -5,7 +5,8 @@ import { checkGuessing, setGuess, setCurrentCity } from '../redux/guessing/Guess
 import styles from './Guesting.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import getRandomCity from '../utils/getRundomCity';
-export function Guessing() {
+
+function Guessing() {
   const currentCity = useSelector(selectCurrentCity);
   const currentGuess = useSelector(selectCurrentGuess);
   const dispatch = useDispatch();
@@ -15,22 +16,33 @@ export function Guessing() {
   };
 
   useEffect(changeCurrentCity, [dispatch]);
+
+  const handleSetGuess = (e: { target: { value: string } }) => {
+    const value = +e.target.value;
+    if (!isNaN(value)) {
+      dispatch(setGuess(value));
+    }
+  };
+  const handleChack = () => {
+    dispatch(checkGuessing(currentGuess, currentCity));
+    changeCurrentCity();
+    dispatch(setGuess(0));
+  };
   return (
-    <div>
-      <div className={styles.row}>
-        <span className={styles.value}>{currentCity?.name}</span>
-      </div>
-      <div>
+    <div className={styles.wrap}>
+      <p className={styles.textbox}>{currentCity?.name}</p>
+      <div className={styles.cast}>
         <input
-          className={styles.textbox}
+          className={styles.input}
           aria-label="Set increment amount"
-          value={currentGuess}
-          onChange={e => dispatch(setGuess(e.target.value))}
+          value={currentGuess || ''}
+          onChange={handleSetGuess}
         />
-        <button className={styles.asyncButton} onClick={() => dispatch(checkGuessing())}>
+        <button className={styles.asyncButton} onClick={handleChack}>
           Check
         </button>
       </div>
     </div>
   );
 }
+export default Guessing;
